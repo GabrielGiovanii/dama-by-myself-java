@@ -1,11 +1,11 @@
 package application;
 
-
+import boardgame.Piece;
 import dama.Color;
 import dama.DamaPiece;
 
 public class UI {
-	
+
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
@@ -31,14 +31,37 @@ public class UI {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
-	
-	protected void printMatch() {
-		
+
+	protected static void printMatch() {
+
 	}
-	
-	protected void printPiece(DamaPiece piece) {
+
+	protected static void printBoard(DamaPiece[][] pieces) {
+		for (int l = 0; l < pieces.length; l++) {
+			System.out.print(pieces.length - l + " ");
+			
+			for (int c = 0; c < pieces.length; c++) {
+				printPiece(pieces[l][c], (c == pieces.length - 1) ? true : false);
+			}
+			System.out.println();
+		}
+		System.out.println("  a b c d e f g h");
+	}
+
+	protected static void printPiece(DamaPiece piece, boolean lastColumn) {
 		if (piece != null) {
-			System.out.print();
+			if (lastColumn) {
+				System.out.print(piece.toString());
+			} else {
+				System.out.print(piece.toString() + " ");
+			}
+		} 
+		else {
+			if (lastColumn) {
+				System.out.print("-");
+			} else {
+				System.out.print("- ");
+			}
 		}
 	}
 }

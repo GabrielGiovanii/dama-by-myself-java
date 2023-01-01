@@ -3,7 +3,7 @@ package dama;
 import boardgame.Board;
 import boardgame.Piece;
 
-public class DamaPiece extends Piece {
+public abstract class DamaPiece extends Piece {
 	private Color color;
 	
 	public DamaPiece(Board board, Color color) {
@@ -11,10 +11,8 @@ public class DamaPiece extends Piece {
 		this.color = color;
 	}
 
-	@Override
-	protected boolean[][] possibleMoves() {
-		// TODO Auto-generated method stub
-		return null;
+	public Color getColor() {
+		return color;
 	}
 
 }
