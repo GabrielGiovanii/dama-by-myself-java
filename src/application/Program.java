@@ -14,7 +14,7 @@ public class Program {
 		try {
 			DamaMatch match = new DamaMatch();
 			UI ui = new UI();
-			
+			ui.clearScreen();
 			ui.printBoard(match.getPieces());
 		} 
 		catch (BoardException e) {

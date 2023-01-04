@@ -38,22 +38,32 @@ public class UI {
 
 	protected static void printBoard(DamaPiece[][] pieces) {
 		for (int l = 0; l < pieces.length; l++) {
+			System.out.print(ANSI_GREEN);
 			System.out.print(pieces.length - l + " ");
-			
+			System.out.print(ANSI_RESET);
 			for (int c = 0; c < pieces.length; c++) {
 				printPiece(pieces[l][c], (c == pieces.length - 1) ? true : false);
 			}
 			System.out.println();
 		}
-		System.out.println("  a b c d e f g h");
+		System.out.println(ANSI_GREEN + "  a b c d e f g h" + ANSI_RESET);
 	}
 
 	protected static void printPiece(DamaPiece piece, boolean lastColumn) {
 		if (piece != null) {
 			if (lastColumn) {
-				System.out.print(piece.toString());
-			} else {
-				System.out.print(piece.toString() + " ");
+				if (piece.getColor() == Color.WHITE) {
+					System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET);
+				} else {
+					System.out.print(ANSI_YELLOW + piece.toString() + ANSI_RESET);
+				}
+			} 
+			else {
+				if (piece.getColor() == Color.WHITE) {
+					System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET + " ");
+				} else {
+					System.out.print(ANSI_YELLOW + piece.toString() + ANSI_RESET + " ");
+				}
 			}
 		} 
 		else {
@@ -64,4 +74,17 @@ public class UI {
 			}
 		}
 	}
+	
+	protected static void printPiecee(DamaPiece piece) {
+		if (piece != null) {
+				if (piece.getColor() == Color.WHITE) {
+					System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET + " ");
+				} else {
+					System.out.print(ANSI_GREEN + piece.toString() + ANSI_RESET + " ");
+				}
+		}
+		else {
+			System.out.print("- ");
+			}
+		}
 }
