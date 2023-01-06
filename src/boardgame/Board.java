@@ -32,6 +32,7 @@ public class Board {
 			throw new BoardException("Ja existe uma peca nessa posicao " + position.toString() + ".");
 		}
 		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position;
 	}
 	public Piece removedPieceBoard(Position position) {
 		if(!thereIsAPiece(position)) {

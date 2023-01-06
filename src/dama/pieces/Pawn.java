@@ -11,25 +11,38 @@ public class Pawn extends DamaPiece {
 		super(board, color);
 	}
 
+	public boolean canMove(Position position, int column) {
+		Position p = new Position(position.getRow(), position.getColumn());
+
+		if (getBoard().positionExists(position) && !getBoard().thereIsAPiece(position)) {
+			p.setValues(p.getRow() + 1, p.getColumn() - 1);
+			if (thereIsOpponentPiece(p)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	@Override
-	protected boolean[][] possibleMoves() {
+	public boolean[][] possibleMoves() {
 		boolean[][] mat = new boolean[getBoard().getRow()][getBoard().getColumn()];
 		Position p = new Position(0, 0);
 
-		// ne
-		p.setValues(position.getRow() + 1, position.getColumn() + 1);
-		if (getBoard().positionExists(p) && thereIsOpponentPiece(p)) {
-			p.setValues(p.getRow() + 1, p.getColumn() + 1);
-			if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-				p.setValues(p.getRow() + 1, p.getColumn() + 1);
-				if (getBoard().positionExists(p) && getBoard().thereIsAPiece(p) 
-						|| getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
-					mat[p.getRow() - 1][p.getColumn() - 1] = true;
-				}
+			if (getColor() == Color.WHITE) {
+				boolean x = true;
+				
+				/*while (x) {
+					p.setValues(position.getRow() - 2, position.getColumn() + 2);
+					int column = -2;
+					while (column <= 2) {
+						if (column != 0) {
+						}
+						column = column + 2;
+					}
+				}*/
+				
 			}
-		}
-		
-		
 		return mat;
 	}
 

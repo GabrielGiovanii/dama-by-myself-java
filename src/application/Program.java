@@ -5,6 +5,7 @@ import java.util.Scanner;
 import boardgame.BoardException;
 import dama.DamaException;
 import dama.DamaMatch;
+import dama.DamaPosition;
 
 public class Program {
 
@@ -14,8 +15,12 @@ public class Program {
 		try {
 			DamaMatch match = new DamaMatch();
 			UI ui = new UI();
+			
+			DamaPosition test = new DamaPosition('b', 2);
+			boolean[][] possibleMoves = match.possibleMoves(test);
+			
 			ui.clearScreen();
-			ui.printBoard(match.getPieces());
+			ui.printBoard(match.getPieces(), possibleMoves);
 		} 
 		catch (BoardException e) {
 			System.out.println(e.getMessage());
@@ -24,6 +29,7 @@ public class Program {
 			System.out.println(e.getMessage());
 		}
 		
+		sc.next();
 	}
 
 }

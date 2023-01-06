@@ -36,55 +36,35 @@ public class UI {
 
 	}
 
-	protected static void printBoard(DamaPiece[][] pieces) {
+	protected static void printBoard(DamaPiece[][] pieces, boolean[][] possibleMoves) {
 		for (int l = 0; l < pieces.length; l++) {
 			System.out.print(ANSI_GREEN);
 			System.out.print(pieces.length - l + " ");
 			System.out.print(ANSI_RESET);
 			for (int c = 0; c < pieces.length; c++) {
-				printPiece(pieces[l][c], (c == pieces.length - 1) ? true : false);
+				printPiece(pieces[l][c], possibleMoves[l][c]);
+
 			}
 			System.out.println();
 		}
 		System.out.println(ANSI_GREEN + "  a b c d e f g h" + ANSI_RESET);
 	}
 
-	protected static void printPiece(DamaPiece piece, boolean lastColumn) {
+	protected static void printPiece(DamaPiece piece, boolean background) {
+		if (background) {
+			System.out.print(ANSI_BLUE_BACKGROUND);
+		}
 		if (piece != null) {
-			if (lastColumn) {
-				if (piece.getColor() == Color.WHITE) {
-					System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET);
-				} else {
-					System.out.print(ANSI_YELLOW + piece.toString() + ANSI_RESET);
-				}
-			} 
-			else {
-				if (piece.getColor() == Color.WHITE) {
-					System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET + " ");
-				} else {
-					System.out.print(ANSI_YELLOW + piece.toString() + ANSI_RESET + " ");
-				}
-			}
-		} 
-		else {
-			if (lastColumn) {
-				System.out.print("-");
+			if (piece.getColor() == Color.WHITE) {
+				System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET);
 			} else {
-				System.out.print("- ");
+				System.out.print(ANSI_GREEN + piece.toString() + ANSI_RESET);
 			}
-		}
-	}
-	
-	protected static void printPiecee(DamaPiece piece) {
-		if (piece != null) {
-				if (piece.getColor() == Color.WHITE) {
-					System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET + " ");
-				} else {
-					System.out.print(ANSI_GREEN + piece.toString() + ANSI_RESET + " ");
-				}
 		}
 		else {
-			System.out.print("- ");
-			}
+			System.out.print("-");
 		}
+		System.out.print(ANSI_RESET);
+		System.out.print(" ");
+	}
 }

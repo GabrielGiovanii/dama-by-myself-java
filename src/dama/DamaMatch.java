@@ -9,6 +9,8 @@ import dama.pieces.Pawn;
 
 public class DamaMatch {
 	private Board board;
+	private Color currentPlayer;
+	private int turn;
 	
 	List<DamaPiece> piecesOnTheBoard = new ArrayList<>();
 	List<DamaPiece> piecesCaptured = new ArrayList<>();
@@ -16,6 +18,7 @@ public class DamaMatch {
 	public DamaMatch() {
 		board = new Board(8, 8);
 		initialSetup();
+		currentPlayer = Color.WHITE;
 	}
 	
 	public DamaPiece[][] getPieces(){
@@ -26,6 +29,19 @@ public class DamaMatch {
 			}
 		}
 		return p;
+	}
+	
+	public Color getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+
+	public boolean[][] possibleMoves(DamaPosition sourcePosition){
+		Position p = sourcePosition.toPosition();
+		return board.piece(p).possibleMoves();
 	}
 	
 	private void placeNewPieceDama(char column, int row, DamaPiece piece) {
@@ -40,16 +56,17 @@ public class DamaMatch {
 	
 	private void initialSetup() {
 		placeNewPieceDama('b', 2, new Pawn(board, Color.WHITE));
-		placeNewPieceDama('c', 2, new Pawn(board, Color.WHITE));
-		placeNewPieceDama('a', 3, new Pawn(board, Color.WHITE));
+		//placeNewPieceDama('d', 2, new Pawn(board, Color.WHITE));
+		//placeNewPieceDama('a', 3, new Pawn(board, Color.WHITE));
 		
-		placeNewPieceDama('c', 3, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('c', 3, new Pawn(board, Color.BLACK));
 		//placeNewPieceDama('c', 5, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('e', 3, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('e', 3, new Pawn(board, Color.BLACK));
 		//placeNewPieceDama('e', 5, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('c', 7, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('g', 7, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('e', 7, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('g', 5, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('c', 7, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('g', 7, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('e', 7, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('g', 5, new Pawn(board, Color.BLACK));
+		//placeNewPieceDama('g', 3, new Pawn(board, Color.BLACK));
 	}
 }

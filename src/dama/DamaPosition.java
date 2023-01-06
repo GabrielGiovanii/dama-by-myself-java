@@ -6,7 +6,7 @@ public class DamaPosition {
 	private char column;
 	private int row;
 	
-	protected DamaPosition(char column, int row) {
+	public DamaPosition(char column, int row) {
 		this.column = column;
 		this.row = row;
 	}
