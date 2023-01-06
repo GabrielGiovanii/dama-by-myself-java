@@ -19,6 +19,7 @@ public class DamaMatch {
 		board = new Board(8, 8);
 		initialSetup();
 		currentPlayer = Color.WHITE;
+		turn = 1;
 	}
 	
 	public DamaPiece[][] getPieces(){
@@ -38,7 +39,27 @@ public class DamaMatch {
 	public int getTurn() {
 		return turn;
 	}
-
+	
+	public void increaseTurn() {
+		turn++;
+	}
+	
+	public void makeMove(DamaPosition source, DamaPosition target) {
+		Position pSource = source.toPosition();
+		if(!board.positionExists(pSource)){
+			throw new DamaException("A posicao de origem nao existe, intervalo permitido: a1 a h8.");
+		}
+		if(!board.thereIsAPiece(pSource)) {
+			throw new DamaException("Nao existe uma peca na posicao digitada.");
+		}
+		if(!board.piece(pSource).isThereAnyPossibleMove()) {
+			throw new DamaException("Nao existe movimento possivel para peca escolhida.");
+		}
+		if(currentPlayer != ((DamaPiece)board.piece(pSource)).getColor()){
+			throw new DamaException("A peca escolhida nao e sua.");
+		}
+	}
+	
 	public boolean[][] possibleMoves(DamaPosition sourcePosition){
 		Position p = sourcePosition.toPosition();
 		return board.piece(p).possibleMoves();

@@ -11,16 +11,18 @@ public class Pawn extends DamaPiece {
 		super(board, color);
 	}
 
-	public boolean canMove(Position position, int column) {
+	public boolean canMove(Position position, int column, Color color) {
 		Position p = new Position(position.getRow(), position.getColumn());
-
-		if (getBoard().positionExists(position) && !getBoard().thereIsAPiece(position)) {
-			p.setValues(p.getRow() + 1, p.getColumn() - 1);
-			if (thereIsOpponentPiece(p)) {
-				return true;
-			}
+		
+		if(color == Color.WHITE) {
+			if (getBoard().positionExists(position) && !getBoard().thereIsAPiece(position)) {
+				p.setValues(p.getRow() + 1, p.getColumn() - 1);
+				if (thereIsOpponentPiece(p)) {
+					return true;
+				}
+			}			
 		}
-
+		
 		return false;
 	}
 
@@ -37,6 +39,7 @@ public class Pawn extends DamaPiece {
 					int column = -2;
 					while (column <= 2) {
 						if (column != 0) {
+							
 						}
 						column = column + 2;
 					}
