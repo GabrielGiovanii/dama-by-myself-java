@@ -37,9 +37,12 @@ public class UI {
 	}
 
 	protected static void printBoard(DamaPiece[][] pieces, boolean[][] possibleMoves) {
+		//int t = 0;
 		for (int l = 0; l < pieces.length; l++) {
 			System.out.print(ANSI_GREEN);
 			System.out.print(pieces.length - l + " ");
+			//System.out.print(t + " ");
+			//t++;
 			System.out.print(ANSI_RESET);
 			for (int c = 0; c < pieces.length; c++) {
 				printPiece(pieces[l][c], possibleMoves[l][c]);
@@ -48,6 +51,7 @@ public class UI {
 			System.out.println();
 		}
 		System.out.println(ANSI_GREEN + "  a b c d e f g h" + ANSI_RESET);
+		//System.out.println(ANSI_GREEN + "  0 1 2 3 4 5 6 7" + ANSI_RESET);
 	}
 
 	protected static void printPiece(DamaPiece piece, boolean background) {
@@ -58,7 +62,7 @@ public class UI {
 			if (piece.getColor() == Color.WHITE) {
 				System.out.print(ANSI_WHITE + piece.toString() + ANSI_RESET);
 			} else {
-				System.out.print(ANSI_GREEN + piece.toString() + ANSI_RESET);
+				System.out.print(ANSI_YELLOW + piece.toString() + ANSI_RESET);
 			}
 		}
 		else {
