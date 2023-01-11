@@ -76,19 +76,20 @@ public class DamaMatch {
 	}
 	
 	private void initialSetup() {
-		placeNewPieceDama('f', 2, new Pawn(board, Color.WHITE));
-		placeNewPieceDama('d', 4, new Pawn(board, Color.WHITE));
+		placeNewPieceDama('h', 2, new Pawn(board, Color.WHITE));
+		//placeNewPieceDama('d', 4, new Pawn(board, Color.WHITE));
 		placeNewPieceDama('a', 3, new Pawn(board, Color.WHITE));
 		
-		placeNewPieceDama('f', 6, new Pawn(board, Color.WHITE));
-		placeNewPieceDama('b', 8, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('c', 5, new Pawn(board, Color.WHITE));
+		//placeNewPieceDama('f', 6, new Pawn(board, Color.WHITE));
+		//placeNewPieceDama('b', 8, new Pawn(board, Color.BLACK));
+		placeNewPieceDama('c', 5, new Pawn(board, Color.BLACK));
 		placeNewPieceDama('e', 3, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('e', 5, new Pawn(board, Color.WHITE));
-		placeNewPieceDama('c', 7, new Pawn(board, Color.WHITE));
+		placeNewPieceDama('c', 3, new Pawn(board, Color.BLACK));
+		placeNewPieceDama('e', 5, new Pawn(board, Color.BLACK));
+		placeNewPieceDama('c', 7, new Pawn(board, Color.BLACK));
 		placeNewPieceDama('g', 7, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('e', 7, new Pawn(board, Color.WHITE));
+		placeNewPieceDama('e', 7, new Pawn(board, Color.BLACK));
 		placeNewPieceDama('g', 5, new Pawn(board, Color.BLACK));
-		placeNewPieceDama('g', 3, new Pawn(board, Color.WHITE));
+		placeNewPieceDama('g', 3, new Pawn(board, Color.BLACK));
 	}
 }

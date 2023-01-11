@@ -14,7 +14,7 @@ public class Pawn extends DamaPiece {
 	public boolean canMove(Position position, int column, Color color) {
 		Position p = new Position(position.getRow(), position.getColumn());
 		int rowOperator;
-		
+
 		if (getColor() == Color.WHITE) {
 			rowOperator = 1;
 		} else {
@@ -49,7 +49,7 @@ public class Pawn extends DamaPiece {
 		Position[][] neP = new Position[4][3];
 		Position[][] nwP = new Position[4][3];
 		int rowOperator;
-		
+
 		if (getColor() == Color.WHITE) {
 			rowOperator = -2;
 		} else {
@@ -62,37 +62,33 @@ public class Pawn extends DamaPiece {
 			neP[1][0] = new Position(pPieceNow.getRow() + rowOperator, pPieceNow.getColumn() + 2);
 			neP[2][0] = new Position(pPieceNow.getRow() + rowOperator, pPieceNow.getColumn() + 2);
 			neP[3][0] = new Position(pPieceNow.getRow() + rowOperator, pPieceNow.getColumn() + 2);
-			mat[pPieceNow.getRow() + rowOperator][pPieceNow.getColumn() + 2] = true;
+			//mat[pPieceNow.getRow() + rowOperator][pPieceNow.getColumn() + 2] = true;
 			if (canMove(new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2), -2, getColor())) {
 				neP[0][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2);
 				neP[1][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2);
-				mat[levelOne.getRow() + rowOperator][levelOne.getColumn() - 2] = true;
+				//mat[levelOne.getRow() + rowOperator][levelOne.getColumn() - 2] = true;
 				Position levelTwo = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2);
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2, getColor())) {
 					neP[0][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
 				}
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2, getColor())) {
 					neP[1][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
 				}
 			}
 			if (canMove(new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2), 2, getColor())) {
 				neP[2][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2);
 				neP[3][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2);
-				mat[levelOne.getRow() + rowOperator][levelOne.getColumn() + 2] = true;
+				//mat[levelOne.getRow() + rowOperator][levelOne.getColumn() + 2] = true;
 				Position levelTwo = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2);
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2, getColor())) {
 					neP[2][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
 				}
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2, getColor())) {
 					neP[3][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
 				}
 			}
 		}
@@ -103,40 +99,64 @@ public class Pawn extends DamaPiece {
 			nwP[1][0] = new Position(pPieceNow.getRow() + rowOperator, pPieceNow.getColumn() - 2);
 			nwP[2][0] = new Position(pPieceNow.getRow() + rowOperator, pPieceNow.getColumn() - 2);
 			nwP[3][0] = new Position(pPieceNow.getRow() + rowOperator, pPieceNow.getColumn() - 2);
-			mat[pPieceNow.getRow() + rowOperator][pPieceNow.getColumn() - 2] = true;
+			//mat[pPieceNow.getRow() + rowOperator][pPieceNow.getColumn() - 2] = true;
 			if (canMove(new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2), -2, getColor())) {
 				nwP[0][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2);
 				nwP[1][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2);
-				mat[levelOne.getRow() + rowOperator][levelOne.getColumn() - 2] = true;
+				//mat[levelOne.getRow() + rowOperator][levelOne.getColumn() - 2] = true;
 				Position levelTwo = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() - 2);
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2, getColor())) {
 					nwP[0][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
 				}
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2, getColor())) {
 					nwP[1][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
 				}
 			}
 			if (canMove(new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2), 2, getColor())) {
 				nwP[2][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2);
 				nwP[3][1] = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2);
-				mat[levelOne.getRow() + rowOperator][levelOne.getColumn() + 2] = true;
+				//mat[levelOne.getRow() + rowOperator][levelOne.getColumn() + 2] = true;
 				Position levelTwo = new Position(levelOne.getRow() + rowOperator, levelOne.getColumn() + 2);
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2), -2, getColor())) {
 					nwP[2][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() - 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() - 2] = true;
 				}
-				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2,
-						getColor())) {
+				if (canMove(new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2), 2, getColor())) {
 					nwP[3][2] = new Position(levelTwo.getRow() + rowOperator, levelTwo.getColumn() + 2);
-					mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
+					//mat[levelTwo.getRow() + rowOperator][levelTwo.getColumn() + 2] = true;
 				}
 			}
 		}
+		
+		int biggerCombination = 0;
+		for (int column = 2; 0 <= column; column--) {
+			for (int row = 0; row < 4; row++) {
+				if (neP[row][column] != null) {
+					if(biggerCombination < column) {
+						biggerCombination = column;
+					}
+					if(biggerCombination == column) {
+						mat[neP[row][column].getRow()][neP[row][column].getColumn()] = true;
+					}
+				}			
+			}
+		}
+		biggerCombination = 0;
+		for (int column = 2; 0 <= column; column--) {
+			for (int row = 0; row < 4; row++) {
+				if (nwP[row][column] != null) {
+					if(biggerCombination < column) {
+						biggerCombination = column;
+					}
+					if(biggerCombination == column) {
+						mat[nwP[row][column].getRow()][nwP[row][column].getColumn()] = true;
+					}
+				}			
+			}
+		}
+
 		return mat;
 	}
 

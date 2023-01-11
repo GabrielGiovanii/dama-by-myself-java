@@ -16,7 +16,7 @@ public class Program {
 			DamaMatch match = new DamaMatch();
 			UI ui = new UI();
 			
-			DamaPosition test = new DamaPosition('b', 8);
+			DamaPosition test = new DamaPosition('h', 2);
 			boolean[][] possibleMoves = match.possibleMoves(test);
 			
 			ui.clearScreen();
