@@ -60,15 +60,15 @@ public class DamaMatch {
 		}
 	}
 	
-	public boolean[][] possibleMoves(DamaPosition sourcePosition){
+	public int[][] possibleMoves(DamaPosition sourcePosition){
 		Position p = sourcePosition.toPosition();
-		return board.piece(p).possibleMoves();
+		return board.piece(p).possibleMoves(1, new Position(0, 0));
 	}
 	
 	private void placeNewPieceDama(char column, int row, DamaPiece piece) {
 		//DamaPosition dP = new DamaPosition(column, row);
 		//if(!board.positionExists(dP.toPosition())){
-		//	throw new DamaException("A posicao não existe no tabuleiro: " + dP);
+		//	throw new DamaException("A posicao nï¿½o existe no tabuleiro: " + dP);
 		//}
 		//board.placePieceBoard(piece, dP.toPosition());
 		board.placePieceBoard(piece, new DamaPosition(column, row).toPosition());

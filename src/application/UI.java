@@ -32,11 +32,15 @@ public class UI {
 		System.out.flush();
 	}
 
-	protected static void printMatch() {
-
+	protected static void printMatch(DamaPiece[][] pieces, int[][] possibleMoves) {
+		printBoard(pieces, possibleMoves);
 	}
-
-	protected static void printBoard(DamaPiece[][] pieces, boolean[][] possibleMoves) {
+	
+	protected void printSequencePossibleMoves() {
+		
+	}
+	
+	protected static void printBoard(DamaPiece[][] pieces, int[][] possibleMoves) {
 		//int t = 0;
 		for (int l = 0; l < pieces.length; l++) {
 			System.out.print(ANSI_GREEN);
@@ -45,7 +49,7 @@ public class UI {
 			//t++;
 			System.out.print(ANSI_RESET);
 			for (int c = 0; c < pieces.length; c++) {
-				printPiece(pieces[l][c], possibleMoves[l][c]);
+				printPiece(pieces[l][c], possibleMoves[l][c]==1);
 
 			}
 			System.out.println();

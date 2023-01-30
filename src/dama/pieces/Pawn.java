@@ -43,8 +43,8 @@ public class Pawn extends DamaPiece {
 	}
 
 	@Override
-	public boolean[][] possibleMoves() {
-		boolean[][] mat = new boolean[getBoard().getRow()][getBoard().getColumn()];
+	public int[][] possibleMoves(int value, Position possibleMove) {
+		int[][] mat = new int[getBoard().getRow()][getBoard().getColumn()];
 		Position pPieceNow = new Position(position.getRow(), position.getColumn());
 		Position[][] neP = new Position[4][3];
 		Position[][] nwP = new Position[4][3];
@@ -129,7 +129,7 @@ public class Pawn extends DamaPiece {
 				}
 			}
 		}
-		
+		//Retornar última posição possível de movimento dado uma sequência de Position
 		int biggerCombination = 0;
 		for (int column = 2; 0 <= column; column--) {
 			for (int row = 0; row < 4; row++) {
@@ -138,7 +138,7 @@ public class Pawn extends DamaPiece {
 						biggerCombination = column;
 					}
 					if(biggerCombination == column) {
-						mat[neP[row][column].getRow()][neP[row][column].getColumn()] = true;
+						mat[neP[row][column].getRow()][neP[row][column].getColumn()] = 1;
 					}
 				}			
 			}
@@ -151,10 +151,35 @@ public class Pawn extends DamaPiece {
 						biggerCombination = column;
 					}
 					if(biggerCombination == column) {
-						mat[nwP[row][column].getRow()][nwP[row][column].getColumn()] = true;
+						mat[nwP[row][column].getRow()][nwP[row][column].getColumn()] = 1;
 					}
 				}			
 			}
+		}
+		//Retornar sequência de Position de peças adversárias dada uma posição de movimento
+		int opponentCaptured[][] = new int[getBoard().getRow()][getBoard().getColumn()];
+		if(value == 2) {
+			for(int j = 3; 0 <= j ;j--) {
+				for (int i = 0; i < 3 ;i++) {
+					if(neP[i][j] != null) {
+						if(neP[i][j].getRow() == possibleMove.getRow() 
+								&& neP[i][j].getColumn() == possibleMove.getColumn()) {
+							for(int p = j; 0 <= p; p--) {
+								opponentCaptured[neP[i][p].getRow()][neP[i][p].getColumn()] = 2;
+							}
+						}
+					}
+					if(nwP[i][j] != null) {
+						if(nwP[i][j].getRow() == possibleMove.getRow() 
+								&& nwP[i][j].getColumn() == possibleMove.getColumn()) {
+							for(int p = j; 0 <= p; p--) {
+								opponentCaptured[nwP[i][p].getRow()][nwP[i][p].getColumn()] = 2;
+							}
+						}
+					}
+				}
+			}
+			return opponentCaptured;
 		}
 
 		return mat;

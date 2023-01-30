@@ -17,10 +17,10 @@ public class Program {
 			UI ui = new UI();
 			
 			DamaPosition test = new DamaPosition('h', 2);
-			boolean[][] possibleMoves = match.possibleMoves(test);
+			int[][] possibleMoves = match.possibleMoves(test);
 			
 			ui.clearScreen();
-			ui.printBoard(match.getPieces(), possibleMoves);
+			ui.printMatch(match.getPieces(), possibleMoves);
 		} 
 		catch (BoardException e) {
 			System.out.println(e.getMessage());
