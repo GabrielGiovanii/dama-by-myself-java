@@ -58,11 +58,17 @@ public class DamaMatch {
 		if(currentPlayer != ((DamaPiece)board.piece(pSource)).getColor()){
 			throw new DamaException("A peca escolhida nao e sua.");
 		}
+		Position pTarget = target.toPosition();
 	}
 	
 	public int[][] possibleMoves(DamaPosition sourcePosition){
 		Position p = sourcePosition.toPosition();
 		return board.piece(p).possibleMoves(1, new Position(0, 0));
+	}
+	
+	public int[][] opponentCaptured(DamaPosition sourcePosition, Position targetPosition){
+		Position p = sourcePosition.toPosition();
+		return board.piece(p).possibleMoves(2, targetPosition);
 	}
 	
 	private void placeNewPieceDama(char column, int row, DamaPiece piece) {

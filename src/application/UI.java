@@ -1,8 +1,13 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import boardgame.Piece;
 import dama.Color;
+import dama.DamaMatch;
 import dama.DamaPiece;
+import dama.DamaPosition;
 
 public class UI {
 
@@ -32,21 +37,45 @@ public class UI {
 		System.out.flush();
 	}
 
-	protected static void printMatch(DamaPiece[][] pieces, int[][] possibleMoves) {
-		printBoard(pieces, possibleMoves);
+	protected static void printMatch(DamaPiece[][] pieces) {
+		printBoard(pieces);
 	}
 	
-	protected void printSequencePossibleMoves() {
-		
+	public static DamaPosition readDamaPosition(Scanner sc) {
+		try {
+			String s = sc.nextLine();
+			char Column = s.charAt(0);
+			int row = Integer.parseInt(s.substring(1));
+			return new DamaPosition(Column, row);
+		} catch (RuntimeException e) {
+			throw new InputMismatchException("Erro de leitura na posicao de dama. valores válidos sao de a1 a h8.");
+		}
 	}
 	
-	protected static void printBoard(DamaPiece[][] pieces, int[][] possibleMoves) {
-		//int t = 0;
+	public static void printBoard(DamaPiece[][] pieces) {
+		int t = 0;
 		for (int l = 0; l < pieces.length; l++) {
 			System.out.print(ANSI_GREEN);
-			System.out.print(pieces.length - l + " ");
-			//System.out.print(t + " ");
-			//t++;
+			//System.out.print(pieces.length - l + " ");
+			System.out.print(t + " ");
+			t++;
+			System.out.print(ANSI_RESET);
+			for (int c = 0; c < pieces.length; c++) {
+				printPiece(pieces[l][c], false);
+			}
+			System.out.println();
+		}
+		//System.out.println(ANSI_GREEN + "  a b c d e f g h" + ANSI_RESET);
+		System.out.println(ANSI_GREEN + "  0 1 2 3 4 5 6 7" + ANSI_RESET);
+	}
+	
+	public static void printBoard(DamaPiece[][] pieces, int[][] possibleMoves) {
+		int t = 7;
+		for (int l = 0; l < pieces.length; l++) {
+			System.out.print(ANSI_GREEN);
+			//System.out.print(pieces.length - l + " ");
+			System.out.print(t + " ");
+			t--;
 			System.out.print(ANSI_RESET);
 			for (int c = 0; c < pieces.length; c++) {
 				printPiece(pieces[l][c], possibleMoves[l][c]==1);
@@ -54,8 +83,8 @@ public class UI {
 			}
 			System.out.println();
 		}
-		System.out.println(ANSI_GREEN + "  a b c d e f g h" + ANSI_RESET);
-		//System.out.println(ANSI_GREEN + "  0 1 2 3 4 5 6 7" + ANSI_RESET);
+		//System.out.println(ANSI_GREEN + "  a b c d e f g h" + ANSI_RESET);
+		System.out.println(ANSI_GREEN + "  0 1 2 3 4 5 6 7" + ANSI_RESET);
 	}
 
 	protected static void printPiece(DamaPiece piece, boolean background) {

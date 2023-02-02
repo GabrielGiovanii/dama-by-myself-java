@@ -159,8 +159,8 @@ public class Pawn extends DamaPiece {
 		//Retornar sequência de Position de peças adversárias dada uma posição de movimento
 		int opponentCaptured[][] = new int[getBoard().getRow()][getBoard().getColumn()];
 		if(value == 2) {
-			for(int j = 3; 0 <= j ;j--) {
-				for (int i = 0; i < 3 ;i++) {
+			for(int j = 2; 0 <= j ;j--) {
+				for (int i = 0; i < 4 ;i++) {
 					if(neP[i][j] != null) {
 						if(neP[i][j].getRow() == possibleMove.getRow() 
 								&& neP[i][j].getColumn() == possibleMove.getColumn()) {
