@@ -12,7 +12,7 @@ public class Dama extends DamaPiece {
 	}
 
 	@Override
-	public int[][] possibleMoves(int value, Position possibleMove) {
+	public Position[][] possibleMoves(int value, Position possibleMove) {
 		// TODO Auto-generated method stub
 		return null;
 	}

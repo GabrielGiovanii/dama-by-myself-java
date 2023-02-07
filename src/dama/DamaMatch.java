@@ -61,12 +61,12 @@ public class DamaMatch {
 		Position pTarget = target.toPosition();
 	}
 	
-	public int[][] possibleMoves(DamaPosition sourcePosition){
+	public Position[][] possibleMoves(DamaPosition sourcePosition){
 		Position p = sourcePosition.toPosition();
 		return board.piece(p).possibleMoves(1, new Position(0, 0));
 	}
 	
-	public int[][] opponentCaptured(DamaPosition sourcePosition, Position targetPosition){
+	public Position[][] opponentCaptured(DamaPosition sourcePosition, Position targetPosition){
 		Position p = sourcePosition.toPosition();
 		return board.piece(p).possibleMoves(2, targetPosition);
 	}

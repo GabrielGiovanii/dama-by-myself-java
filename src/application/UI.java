@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import boardgame.Piece;
+import boardgame.Position;
 import dama.Color;
 import dama.DamaMatch;
 import dama.DamaPiece;
@@ -69,16 +70,16 @@ public class UI {
 		System.out.println(ANSI_GREEN + "  0 1 2 3 4 5 6 7" + ANSI_RESET);
 	}
 	
-	public static void printBoard(DamaPiece[][] pieces, int[][] possibleMoves) {
-		int t = 7;
+	public static void printBoard(DamaPiece[][] pieces, Position[][] possibleMoves) {
+		int t = 0;
 		for (int l = 0; l < pieces.length; l++) {
 			System.out.print(ANSI_GREEN);
 			//System.out.print(pieces.length - l + " ");
 			System.out.print(t + " ");
-			t--;
+			t++;
 			System.out.print(ANSI_RESET);
 			for (int c = 0; c < pieces.length; c++) {
-				printPiece(pieces[l][c], possibleMoves[l][c]==1);
+				printPiece(pieces[l][c], possibleMoves[l][c] != null);
 
 			}
 			System.out.println();

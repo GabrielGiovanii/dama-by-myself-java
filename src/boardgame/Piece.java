@@ -12,12 +12,12 @@ public abstract class Piece {
 		return board;
 	}
 	
-	public abstract int[][] possibleMoves(int value, Position possibleMove);
+	public abstract Position[][] possibleMoves(int value, Position possibleMove);
 	public boolean isThereAnyPossibleMove() {
-		int[][] mat = possibleMoves(1, new Position(0, 0));
+		Position[][] mat = possibleMoves(1, new Position(0, 0));
 		for(int r=0; r < mat.length; r++) {
 			for(int c=0; c < mat.length; c++) {
-				if(mat[r][c]==1) {
+				if(mat[r][c] != null) {
 					return true;
 				}
 			}
